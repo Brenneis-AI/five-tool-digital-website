@@ -1,6 +1,525 @@
-<!-- CSS: page.css | JS: page.js -->
+<!-- GHL PASTE INSTRUCTION: Paste this entire file into one GHL "Custom Code" HTML block. -->
 <!-- Google Fonts (add to GHL page <head>):
      https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Source+Sans+Pro:wght@400;600;700&display=swap -->
+
+<style>
+  /* ========================================
+     BRAND VARIABLES
+     ======================================== */
+  :root {
+    --color-primary: #141E2A;
+    --color-accent: #C09D5F;
+    --color-highlight: #AD8F56;
+    --color-light: #FFFFFF;
+    --color-bg-light: #F5F5F0;
+    --color-border: #E5E7EB;
+    --color-text-muted: #6B7280;
+    --color-dark: #141E2A;
+    --transition-speed: 300ms;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Source Sans Pro', sans-serif;
+    background: var(--color-light);
+    color: var(--color-dark);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ========================================
+     SECTION 4: SPECIAL PRICING
+     ======================================== */
+
+  .special-pricing-section {
+    background: var(--color-accent);
+    padding: 48px 24px;
+    color: var(--color-primary);
+  }
+
+  .special-pricing-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .special-pricing-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 42px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 16px;
+    color: var(--color-primary);
+    letter-spacing: -0.01em;
+  }
+
+  .special-pricing-subtitle {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 48px;
+    color: var(--color-primary);
+    opacity: 0.9;
+  }
+
+  .pricing-cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+    margin-bottom: 48px;
+  }
+
+  @media (min-width: 768px) {
+    .pricing-cards {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .pricing-card {
+    background: var(--color-light);
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .card-icon {
+    font-size: 48px;
+    text-align: center;
+    margin-bottom: 16px;
+  }
+
+  .card-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 24px;
+    color: var(--color-primary);
+  }
+
+  .discount-badges {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    margin-bottom: 32px;
+  }
+
+  .discount-badge {
+    background: var(--color-bg-light);
+    border: 2px solid var(--color-accent);
+    border-radius: 8px;
+    padding: 12px 20px;
+    text-align: center;
+    flex: 1;
+  }
+
+  .discount-amount {
+    font-family: 'Oswald', sans-serif;
+    display: block;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--color-accent);
+    margin-bottom: 4px;
+  }
+
+  .discount-label {
+    font-family: 'Source Sans Pro', sans-serif;
+    display: block;
+    font-size: 16px;
+    color: var(--color-primary);
+    font-weight: 600;
+  }
+
+  .card-details {
+    border-top: 1px solid var(--color-border);
+    padding-top: 20px;
+  }
+
+  .card-label {
+    font-family: 'Oswald', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-primary);
+    margin-bottom: 12px;
+  }
+
+  .qualification-list {
+    font-family: 'Source Sans Pro', sans-serif;
+    list-style: none;
+    padding: 0;
+    margin: 0 0 24px 0;
+  }
+
+  .qualification-list li {
+    padding-left: 24px;
+    position: relative;
+    margin-bottom: 8px;
+    font-size: 18px;
+    line-height: 1.5;
+    color: var(--color-primary);
+  }
+
+  .qualification-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--color-accent);
+    font-weight: 700;
+  }
+
+  .card-verification {
+    font-family: 'Source Sans Pro', sans-serif;
+    background: var(--color-bg-light);
+    padding: 8px;
+    border-radius: 8px;
+    font-size: 16px;
+    line-height: 1.2;
+    color: var(--color-primary);
+  }
+
+  .card-verification strong {
+    display: block;
+    margin-bottom: 4px;
+    color: var(--color-primary);
+  }
+
+  /* Pricing Note */
+  .pricing-note {
+    background: var(--color-primary);
+    color: var(--color-light);
+    padding: 24px;
+    border-radius: 12px;
+    margin-bottom: 48px;
+    text-align: center;
+  }
+
+  .pricing-note p {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* Pricing Examples */
+  .pricing-examples {
+    background: var(--color-light);
+    padding: 40px;
+    border-radius: 12px;
+    margin-bottom: 48px;
+  }
+
+  .examples-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 32px;
+    color: var(--color-primary);
+  }
+
+  .examples-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  @media (min-width: 768px) {
+    .examples-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .example-card {
+    background: var(--color-bg-light);
+    border: 2px solid var(--color-accent);
+    border-radius: 8px;
+    padding: 24px;
+  }
+
+  .example-tier {
+    font-family: 'Oswald', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: var(--color-primary);
+    text-align: center;
+  }
+
+  .example-pricing {
+    font-family: 'Source Sans Pro', sans-serif;
+  }
+
+  .example-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    font-size: 18px;
+  }
+
+  .example-line .label {
+    font-weight: 600;
+    color: var(--color-primary);
+  }
+
+  .example-line .prices s {
+    color: var(--color-text-muted);
+    margin-right: 8px;
+  }
+
+  .example-line .prices strong {
+    color: var(--color-accent);
+    font-size: 18px;
+  }
+
+  .example-savings {
+    background: var(--color-accent);
+    color: var(--color-primary);
+    padding: 12px;
+    border-radius: 6px;
+    text-align: center;
+    margin-top: 16px;
+    font-size: 18px;
+    font-weight: 600;
+  }
+
+  .example-savings strong {
+    font-weight: 700;
+  }
+
+  /* Special Pricing CTA */
+  .special-pricing-cta {
+    text-align: center;
+  }
+
+  .cta-text {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 24px;
+    color: var(--color-primary);
+  }
+
+  .cta-button {
+    font-family: 'Oswald', sans-serif;
+    display: inline-block;
+    padding: 16px 32px;
+    background: var(--color-primary);
+    color: var(--color-light);
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: all var(--transition-speed) ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .cta-button:hover {
+    background: var(--color-highlight);
+    color: var(--color-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  }
+
+  /* ========================================
+     SECTION 5: PRICING FAQ (2-COLUMN)
+     ======================================== */
+
+  .pricing-faq-section {
+    background: var(--color-light);
+    padding: 80px 32px;
+  }
+
+  .pricing-faq-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .faq-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 42px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 16px;
+    color: var(--color-primary);
+  }
+
+  .faq-subtitle {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 48px;
+    color: var(--color-text-muted);
+  }
+
+  .faq-accordion {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-bottom: 48px;
+  }
+
+  /* 2-COLUMN LAYOUT FOR DESKTOP */
+  @media (min-width: 768px) {
+    .faq-accordion {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+  }
+
+  .faq-item {
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--color-light);
+    transition: all var(--transition-speed) ease;
+  }
+
+  .faq-item:hover {
+    border-color: var(--color-accent);
+    box-shadow: 0 2px 8px rgba(192, 157, 95, 0.15);
+  }
+
+  .faq-question {
+    font-family: 'Source Sans Pro', sans-serif;
+    width: 100%;
+    background: none;
+    border: none;
+    text-align: left;
+    padding: 20px 24px;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--color-primary);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: color var(--transition-speed) ease;
+  }
+
+  .faq-question:hover {
+    color: var(--color-accent);
+  }
+
+  .faq-icon {
+    font-size: 24px;
+    color: var(--color-accent);
+    font-weight: 700;
+    transition: transform var(--transition-speed) ease;
+    flex-shrink: 0;
+    margin-left: 12px;
+  }
+
+  .faq-item.active .faq-icon {
+    transform: rotate(45deg);
+  }
+
+  .faq-answer {
+    font-family: 'Source Sans Pro', sans-serif;
+    max-height: 0;
+    overflow: hidden;
+    padding: 0 24px;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--color-primary);
+    transition: max-height var(--transition-speed) ease, padding var(--transition-speed) ease;
+  }
+
+  .faq-item.active .faq-answer {
+    max-height: 500px;
+    padding: 0 24px 20px 24px;
+  }
+
+  .faq-answer p {
+    margin: 0;
+  }
+
+  /* FAQ CTA */
+  .faq-cta {
+    text-align: center;
+    padding-top: 32px;
+    border-top: 1px solid var(--color-border);
+    grid-column: 1 / -1;
+  }
+
+  .faq-cta-text {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 24px;
+    color: var(--color-primary);
+  }
+
+  .cta-button-outline {
+    font-family: 'Oswald', sans-serif;
+    display: inline-block;
+    padding: 16px 32px;
+    background: transparent;
+    color: var(--color-accent);
+    border: 2px solid var(--color-accent);
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: all var(--transition-speed) ease;
+  }
+
+  .cta-button-outline:hover {
+    background: var(--color-accent);
+    color: var(--color-primary);
+    transform: translateY(-2px);
+  }
+
+  /* ========================================
+     RESPONSIVE
+     ======================================== */
+  @media (max-width: 767px) {
+    .special-pricing-section,
+    .pricing-faq-section {
+      padding: 60px 20px;
+    }
+
+    .special-pricing-title,
+    .faq-title {
+      font-size: 32px;
+    }
+
+    .pricing-card {
+      padding: 24px;
+    }
+
+    .discount-badges {
+      flex-direction: column;
+    }
+
+    .pricing-examples {
+      padding: 24px;
+    }
+
+    .faq-accordion {
+      grid-template-columns: 1fr;
+    }
+
+    .faq-question {
+      font-size: 16px;
+      padding: 16px 20px;
+    }
+
+    .faq-answer {
+      font-size: 15px;
+    }
+  }
+</style>
 
 <!-- ========================================
      SECTION 4: SPECIAL PRICING FOR NONPROFITS & VETERANS
@@ -214,3 +733,30 @@
     </div>
   </div>
 </section>
+
+<script>
+function initPricingFaq() {
+  const faqItems = document.querySelectorAll('.faq-item');
+
+  faqItems.forEach(item => {
+    const question = item.querySelector('.faq-question');
+
+    question.addEventListener('click', () => {
+      // Close other open items
+      const openItem = document.querySelector('.faq-item.active');
+      if (openItem && openItem !== item) {
+        openItem.classList.remove('active');
+      }
+
+      // Toggle current item
+      item.classList.toggle('active');
+    });
+  });
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initPricingFaq);
+} else {
+  initPricingFaq();
+}
+</script>

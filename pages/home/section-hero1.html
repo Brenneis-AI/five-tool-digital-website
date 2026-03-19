@@ -1,6 +1,219 @@
-<!-- CSS: page.css | JS: page.js -->
-<!-- Google Fonts (add to GHL page <head>):
-     https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Sans+Pro:wght@400;600&display=swap -->
+<!-- GHL PASTE INSTRUCTION: Paste this entire file into one GHL "Custom Code" HTML block. -->
+<!-- Do NOT split into separate CSS/JS fields — GHL's framework CSS overrides external styles. -->
+
+<style>
+  /* ========================================
+     BRAND FOUNDATION - FIVE TOOL DIGITAL
+     ======================================== */
+  :root {
+    /* Five Tool Baseball Color Palette */
+    --color-primary: #1A2F38;        /* Dark Navy */
+    --color-secondary: #C4A264;      /* Gold */
+    --color-light: #FFFFFF;          /* White */
+
+    /* Typography */
+    --font-display: 'Oswald', sans-serif;
+    --font-body: 'Source Sans Pro', sans-serif;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--color-primary);
+    overflow-x: hidden;
+  }
+
+  /* ========================================
+     HERO SECTION WITH IMAGE SLIDESHOW
+     ======================================== */
+  .hero-slideshow {
+    position: relative;
+    width: 100%;
+    height: 85vh;
+    overflow: hidden;
+    background: var(--color-primary);
+  }
+
+  /* Slideshow Container */
+  .slideshow-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Individual Slides */
+  .hero-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 3s ease-in-out;
+  }
+
+  .hero-slide.active {
+    opacity: 1;
+  }
+
+  /* Image with Ken Burns Effect */
+  .hero-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transform: scale(1.15);
+  }
+
+  /* Start animation when slide is preparing OR active OR has been animated */
+  .hero-slide.preparing img,
+  .hero-slide.active img,
+  .hero-slide.animated img {
+    animation: kenBurnsZoom 20s linear forwards;
+  }
+
+  /* Ken Burns continuous zoom out effect */
+  @keyframes kenBurnsZoom {
+    0% {
+      transform: scale(1.15);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  /* Mobile: Faster animation and shorter height */
+  @media (max-width: 768px) {
+    .hero-slideshow {
+      height: 80vh;
+    }
+
+    .hero-slide.preparing img,
+    .hero-slide.active img,
+    .hero-slide.animated img {
+      animation: kenBurnsZoom 16s linear forwards;
+    }
+  }
+
+  /* Dark Overlay for Text Legibility */
+  .hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(26, 47, 56, 0.9);
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    z-index: 1;
+  }
+
+  .hero-overlay.active {
+    opacity: 1;
+  }
+
+  /* Text Content */
+  .hero-text-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 2;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    max-width: 900px;
+    padding: 0 24px;
+  }
+
+  .hero-text-content.active {
+    opacity: 1;
+  }
+
+  .hero-text-content h1 {
+    font-family: var(--font-display);
+    font-size: 64px;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--color-light);
+    margin-bottom: 32px;
+    text-transform: uppercase;
+  }
+
+  .hero-text-content .tagline {
+    font-family: var(--font-display);
+    font-size: 28px;
+    font-weight: 500;
+    line-height: 1.4;
+    letter-spacing: 0.02em;
+    color: var(--color-secondary);
+    text-transform: uppercase;
+  }
+
+  /* CTA Button */
+  .hero-cta {
+    display: inline-block;
+    margin-top: 48px;
+    padding: 20px 40px;
+    background: var(--color-secondary);
+    color: var(--color-light);
+    border-radius: 8px;
+    text-decoration: none;
+    font-family: var(--font-body);
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    transition: all 300ms ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+
+  .hero-cta:hover {
+    background: var(--color-light);
+    color: var(--color-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  }
+
+  /* ========================================
+     RESPONSIVE DESIGN
+     ======================================== */
+  @media (max-width: 768px) {
+    .hero-slideshow {
+      height: 80vh;
+    }
+
+    .hero-text-content h1 {
+      font-size: 42px;
+    }
+
+    .hero-text-content .tagline {
+      font-size: 20px;
+    }
+
+    .hero-cta {
+      padding: 16px 32px;
+      font-size: 16px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hero-text-content h1 {
+      font-size: 32px;
+    }
+
+    .hero-text-content .tagline {
+      font-size: 18px;
+    }
+  }
+</style>
 
 <!-- HERO SECTION WITH IMAGE SLIDESHOW -->
 <section class="hero-slideshow">
@@ -8,44 +221,24 @@
   <!-- Slideshow Container -->
   <div class="slideshow-container">
 
-    <!-- Slide 1 -->
+    <!-- Slide 1: Little League -->
     <div class="hero-slide" data-slide="1">
-      <picture>
-        <!-- MOBILE IMAGE 1 (PLACEHOLDER - REPLACE srcset URL) -->
-        <source media="(max-width: 768px)" srcset="https://storage.googleapis.com/msgsndr/wU0NfuEf5q6Bpeu8Brps/media/6962bbec98efbd189cb62f87.webp">
-        <!-- DESKTOP IMAGE 1 -->
-        <img src="https://storage.googleapis.com/msgsndr/wU0NfuEf5q6Bpeu8Brps/media/6962abccc7683b55a266c5f3.webp" alt="Youth baseball players">
-      </picture>
+      <img src="https://storage.googleapis.com/msgsndr/wU0NfuEf5q6Bpeu8Brps/media/6962abccc7683b55a266c5f3.webp" alt="Youth baseball players standing with hands behind backs">
     </div>
 
-    <!-- Slide 2 -->
+    <!-- Slide 2: Travel Ball / Middle School -->
     <div class="hero-slide" data-slide="2">
-      <picture>
-         <!-- MOBILE IMAGE 2 (PLACEHOLDER - REPLACE srcset URL) -->
-        <source media="(max-width: 768px)" srcset="https://storage.googleapis.com/msgsndr/wU0NfuEf5q6Bpeu8Brps/media/6962bbecf13bc329e4647c4e.webp">
-        <!-- DESKTOP IMAGE 2 -->
-        <img src="https://storage.googleapis.com/msgsndr/wU0NfuEf5q6Bpeu8Brps/media/6962abccc7683bc98266c5f2.webp" alt="Youth travel baseball team">
-      </picture>
+      <img src="https://storage.googleapis.com/msgsndr/wU0NfuEf5q6Bpeu8Brps/media/6962abccc7683bc98266c5f2.webp" alt="Youth travel baseball team on field">
     </div>
 
-    <!-- Slide 3 -->
+    <!-- Slide 3: High School -->
     <div class="hero-slide" data-slide="3">
-      <picture>
-         <!-- MOBILE IMAGE 3 (PLACEHOLDER - REPLACE srcset URL) -->
-        <source media="(max-width: 768px)" srcset="https://storage.googleapis.com/msgsndr/wU0NfuEf5q6Bpeu8Brps/media/6962bbecf13bc33887647c4f.webp">
-        <!-- DESKTOP IMAGE 3 -->
-        <img src="https://storage.googleapis.com/msgsndr/wU0NfuEf5q6Bpeu8Brps/media/6962abcc98efbd836bae3671.webp" alt="High school baseball players">
-      </picture>
+      <img src="https://storage.googleapis.com/msgsndr/wU0NfuEf5q6Bpeu8Brps/media/6962abcc98efbd836bae3671.webp" alt="High school baseball players under field lights">
     </div>
 
-    <!-- Slide 4 -->
+    <!-- Slide 4: College / Pro -->
     <div class="hero-slide" data-slide="4">
-      <picture>
-         <!-- MOBILE IMAGE 4 (PLACEHOLDER - REPLACE srcset URL) -->
-        <source media="(max-width: 768px)" srcset="https://storage.googleapis.com/msgsndr/wU0NfuEf5q6Bpeu8Brps/media/6962bbece186384db29a7eb5.webp">
-        <!-- DESKTOP IMAGE 4 -->
-        <img src="https://storage.googleapis.com/msgsndr/wU0NfuEf5q6Bpeu8Brps/media/6962abccf13bc378165c90a8.webp" alt="College or professional baseball players">
-      </picture>
+      <img src="https://storage.googleapis.com/msgsndr/wU0NfuEf5q6Bpeu8Brps/media/6962abccf13bc378165c90a8.webp" alt="College or professional baseball players in stadium">
     </div>
 
   </div>
@@ -57,7 +250,85 @@
   <div class="hero-text-content">
     <h1>From Little League to the Show.</h1>
     <p class="tagline">You Build the Players. We Build the Systems.</p>
-    <a href="#contact" class="hero-cta">Claim Your League Strategy Session</a>
+    <a href="#contact" class="hero-cta">Book Your Free Baseball Audit</a>
   </div>
 
 </section>
+
+<script>
+  // Configuration
+  const isMobile = window.innerWidth <= 768;
+  const slideDuration = isMobile ? 4000 : 5000; // 4s mobile, 5s desktop
+  const totalSlides = 4;
+
+  let currentSlide = 0;
+  let slideInterval;
+
+  // Get elements
+  const slides = document.querySelectorAll('.hero-slide');
+  const overlay = document.querySelector('.hero-overlay');
+  const textContent = document.querySelector('.hero-text-content');
+
+  // Start slideshow
+  function startSlideshow() {
+    // Activate first slide
+    slides[0].classList.add('active', 'animated');
+
+    slideInterval = setInterval(() => {
+      // Calculate next slide index
+      const nextSlide = currentSlide + 1;
+
+      // If we've shown all slides, show text
+      if (nextSlide >= totalSlides) {
+        slides[currentSlide].classList.remove('active');
+        clearInterval(slideInterval);
+        showText();
+        return;
+      }
+
+      // Pre-start next slide's animation (invisible, but animating)
+      slides[nextSlide].classList.add('preparing', 'animated');
+
+      // Small delay to ensure animation has started, then fade in
+      setTimeout(() => {
+        // Remove active from current slide (but keep animated class)
+        slides[currentSlide].classList.remove('active');
+
+        // Make next slide visible and remove preparing
+        slides[nextSlide].classList.remove('preparing');
+        slides[nextSlide].classList.add('active');
+
+        // Move to next slide
+        currentSlide = nextSlide;
+      }, 50); // 50ms delay ensures animation starts before fade
+
+    }, slideDuration);
+  }
+
+  // Show text overlay
+  function showText() {
+    // Fade in dark overlay
+    overlay.classList.add('active');
+
+    // Wait for overlay, then fade in text
+    setTimeout(() => {
+      textContent.classList.add('active');
+    }, 500);
+  }
+
+  // Initialize on page load
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => { startSlideshow(); });
+  } else {
+    startSlideshow();
+  }
+
+  // Handle window resize (mobile vs desktop timing)
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      location.reload(); // Reload to apply correct timing
+    }, 250);
+  });
+</script>

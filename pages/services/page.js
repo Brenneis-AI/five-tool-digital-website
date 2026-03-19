@@ -1,8 +1,9 @@
+<script>
 /* ========================================
    SECTION: Services Main (section-main1)
    ======================================== */
 
-document.addEventListener('DOMContentLoaded', () => {
+function initServices() {
 
   // DESKTOP: Feature hover interaction
   const featureItems = document.querySelectorAll('.feature-item');
@@ -38,4 +39,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-});
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initServices);
+} else {
+  initServices();
+}
+</script>
