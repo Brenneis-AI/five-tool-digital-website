@@ -50,12 +50,12 @@ function initHeroSlideshow() {
 
   startSlideshow();
 
-  var resizeTimer;
+  var lastWidth = window.innerWidth;
   window.addEventListener('resize', function() {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(function() {
+    if (window.innerWidth !== lastWidth) {
+      lastWidth = window.innerWidth;
       location.reload();
-    }, 250);
+    }
   });
 }
 
