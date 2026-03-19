@@ -8,6 +8,7 @@
         </div>
         <nav class="header-nav">
             <a href="/" class="nav-link">Home</a>
+            <a href="/services" class="nav-link">Services</a>
             <a href="/pricing" class="nav-link">Pricing</a>
             <a href="/about" class="nav-link">About Us</a>
         </nav>
@@ -30,6 +31,7 @@
 <div class="mobile-menu">
     <nav class="mobile-nav">
         <a href="/" class="mobile-nav-link">Home</a>
+        <a href="/services" class="mobile-nav-link">Services</a>
         <a href="/pricing" class="mobile-nav-link">Pricing</a>
         <a href="/about" class="mobile-nav-link">About Us</a>
         <a href="tel:+15404711735" class="mobile-nav-link mobile-nav-phone">
@@ -349,12 +351,11 @@ body {
 </style>
 
 <script>
-// Mobile menu toggle functionality
-document.addEventListener('DOMContentLoaded', function() {
-    const menuToggle = document.querySelector('.mobile-menu-toggle');
-    const mobileMenu = document.querySelector('.mobile-menu');
-    const body = document.body;
-    
+function initHeader() {
+    var menuToggle = document.querySelector('.mobile-menu-toggle');
+    var mobileMenu = document.querySelector('.mobile-menu');
+    var body = document.body;
+
     // Mobile menu toggle
     if (menuToggle) {
         menuToggle.addEventListener('click', function() {
@@ -363,17 +364,17 @@ document.addEventListener('DOMContentLoaded', function() {
             body.classList.toggle('mobile-menu-open');
         });
     }
-    
+
     // Close mobile menu when clicking a link
-    const mobileLinks = document.querySelectorAll('.mobile-nav-link');
-    mobileLinks.forEach(link => {
+    var mobileLinks = document.querySelectorAll('.mobile-nav-link');
+    mobileLinks.forEach(function(link) {
         link.addEventListener('click', function() {
             menuToggle.classList.remove('active');
             mobileMenu.classList.remove('active');
             body.classList.remove('mobile-menu-open');
         });
     });
-    
+
     // Close mobile menu on window resize if it's open
     window.addEventListener('resize', function() {
         if (window.innerWidth > 968) {
@@ -382,35 +383,37 @@ document.addEventListener('DOMContentLoaded', function() {
             body.classList.remove('mobile-menu-open');
         }
     });
-    
+
     // SCROLL-UP STICKY BEHAVIOR (Desktop only)
-    let lastScrollTop = 0;
-    const header = document.querySelector('.site-header');
-    const scrollThreshold = 100; // Start hiding after 100px scroll
-    
+    var lastScrollTop = 0;
+    var header = document.querySelector('.site-header');
+    var scrollThreshold = 100;
+
     window.addEventListener('scroll', function() {
-        // Only apply on desktop
         if (window.innerWidth > 968) {
-            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            
+            var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
             if (scrollTop > scrollThreshold) {
                 header.classList.add('header-scrolled');
-                
+
                 if (scrollTop > lastScrollTop) {
-                    // Scrolling DOWN - hide header
                     header.classList.add('header-hidden');
                 } else {
-                    // Scrolling UP - show header
                     header.classList.remove('header-hidden');
                 }
             } else {
-                // At top of page - always show, remove scrolled state
                 header.classList.remove('header-hidden');
                 header.classList.remove('header-scrolled');
             }
-            
+
             lastScrollTop = scrollTop;
         }
     });
-});
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initHeader);
+} else {
+    initHeader();
+}
 </script>

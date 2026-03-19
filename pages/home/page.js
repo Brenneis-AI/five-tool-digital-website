@@ -1,10 +1,69 @@
 <script>
 /* ========================================
    SECTION: Hero Slideshow (section-hero1)
-   NOTE: Hero JS is embedded inside section-hero1.html as a self-contained block.
-   GHL's framework CSS overrides externally-injected styles, so the hero must
-   stay as one unit (style + html + script) pasted into a single GHL HTML block.
    ======================================== */
+
+function initHeroSlideshow() {
+  var isMobile = window.innerWidth <= 768;
+  var slideDuration = isMobile ? 4000 : 5000;
+  var totalSlides = 4;
+  var currentSlide = 0;
+  var slideInterval;
+
+  var slides = document.querySelectorAll('.hero-slide');
+  var overlay = document.querySelector('.hero-overlay');
+  var textContent = document.querySelector('.hero-text-content');
+
+  if (!slides.length || !overlay || !textContent) return;
+
+  function startSlideshow() {
+    slides[0].classList.add('active', 'animated');
+
+    slideInterval = setInterval(function() {
+      var nextSlide = currentSlide + 1;
+
+      if (nextSlide >= totalSlides) {
+        slides[currentSlide].classList.remove('active');
+        clearInterval(slideInterval);
+        showText();
+        return;
+      }
+
+      slides[nextSlide].classList.add('preparing', 'animated');
+
+      setTimeout(function() {
+        slides[currentSlide].classList.remove('active');
+        slides[nextSlide].classList.remove('preparing');
+        slides[nextSlide].classList.add('active');
+        currentSlide = nextSlide;
+      }, 50);
+
+    }, slideDuration);
+  }
+
+  function showText() {
+    overlay.classList.add('active');
+    setTimeout(function() {
+      textContent.classList.add('active');
+    }, 500);
+  }
+
+  startSlideshow();
+
+  var resizeTimer;
+  window.addEventListener('resize', function() {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(function() {
+      location.reload();
+    }, 250);
+  });
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initHeroSlideshow);
+} else {
+  initHeroSlideshow();
+}
 
 
 /* ========================================
