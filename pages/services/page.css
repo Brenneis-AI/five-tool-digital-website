@@ -7,13 +7,13 @@
    ======================================== */
 :root {
   /* Five Tool Baseball Color Palette */
-  --color-primary: #1A2F38;        /* Dark Navy - Primary Dark */
+  --color-primary: #141E2A;        /* Dark Navy - Primary Dark */
   --color-secondary: #C4A264;      /* Gold - Primary Accent */
   --color-accent: #D3B776;         /* Muted Gold - Secondary Accent */
   --color-highlight: #C4A264;      /* Gold for highlights */
 
   /* Neutrals */
-  --color-dark: #1A2F38;           /* Dark Navy */
+  --color-dark: #141E2A;           /* Dark Navy */
   --color-light: #FFFFFF;          /* White */
   --color-bg-light: #FAEFD1;       /* Light Cream - Light Backgrounds */
   --color-bg-card: #F5E9CA;        /* Cream/Tan - Card Backgrounds */
@@ -386,10 +386,14 @@ body {
 }
 
 /* ========================================
-   MOBILE ACCORDION - Hidden on Desktop
+   ACCORDION — Always Visible (desktop horizontal version removed)
    ======================================== */
-.features-mobile {
+.features-container {
   display: none;
+}
+
+.features-mobile {
+  display: block;
   max-width: 800px;
   margin: 0 auto;
 }
@@ -527,19 +531,72 @@ body {
 }
 
 /* ========================================
+   TESTIMONIAL CARD (in Final CTA)
+   ======================================== */
+.services-testimonial-card {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(196, 162, 100, 0.25);
+  border-radius: 12px;
+  padding: 40px 32px;
+  text-align: left;
+  max-width: 700px;
+  margin: 0 auto 40px auto;
+}
+
+.services-testimonial-mark {
+  font-family: Georgia, serif;
+  font-size: 64px;
+  line-height: 1;
+  color: var(--color-secondary);
+  margin-bottom: 16px;
+}
+
+.services-testimonial-quote {
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.92);
+  font-style: italic;
+  margin: 0 0 24px 0;
+  border: none;
+  padding: 0;
+}
+
+.services-testimonial-divider {
+  width: 40px;
+  height: 2px;
+  background: var(--color-secondary);
+  margin-bottom: 20px;
+}
+
+.services-testimonial-author {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.services-testimonial-name {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--color-secondary);
+}
+
+.services-testimonial-title {
+  font-family: var(--font-body);
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.services-testimonial-org {
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+/* ========================================
    RESPONSIVE DESIGN
    ======================================== */
-
-/* Tablet and below: Hide desktop features, show mobile accordion */
-@media (max-width: 1024px) {
-  .features-container {
-    display: none;
-  }
-
-  .features-mobile {
-    display: block;
-  }
-}
 
 @media (max-width: 768px) {
   .hero {
@@ -591,5 +648,13 @@ body {
 
   .final-cta {
     padding: 80px 24px;
+  }
+
+  .services-testimonial-card {
+    padding: 32px 24px;
+  }
+
+  .services-testimonial-quote {
+    font-size: 16px;
   }
 }

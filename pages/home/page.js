@@ -67,40 +67,22 @@ if (document.readyState === 'loading') {
 
 
 /* ========================================
-   SECTION: Features (section-features3)
+   SECTION: Features Accordion (section-features3)
    ======================================== */
 
 function initFeatures() {
-  // DESKTOP: Feature hover interaction
-  const featureItems = document.querySelectorAll('.feature-item');
-  const featureImages = document.querySelectorAll('.feature-image');
+  var accordionCards = document.querySelectorAll('.feature-accordion-card');
 
-  featureItems.forEach(item => {
-    item.addEventListener('mouseenter', () => {
-      featureItems.forEach(i => i.classList.remove('active'));
-      featureImages.forEach(img => img.classList.remove('active'));
+  accordionCards.forEach(function(card) {
+    var header = card.querySelector('.feature-accordion-header');
 
-      item.classList.add('active');
-      const feature = item.dataset.feature;
-      document.getElementById(`img-${feature}`).classList.add('active');
-    });
-  });
-
-  // MOBILE: Accordion interaction
-  const accordionCards = document.querySelectorAll('.feature-accordion-card');
-
-  accordionCards.forEach(card => {
-    const header = card.querySelector('.feature-accordion-header');
-
-    header.addEventListener('click', () => {
-      // Close all other cards
-      accordionCards.forEach(otherCard => {
+    header.addEventListener('click', function() {
+      accordionCards.forEach(function(otherCard) {
         if (otherCard !== card) {
           otherCard.classList.remove('active');
         }
       });
 
-      // Toggle current card
       card.classList.toggle('active');
     });
   });
@@ -118,34 +100,15 @@ if (document.readyState === 'loading') {
    ======================================== */
 
 function initAccordion() {
-  // CATEGORY ACCORDION FUNCTIONALITY
-  const categoryItems = document.querySelectorAll('.faq-category-item');
+  var items = document.querySelectorAll('.faq-item');
 
-  categoryItems.forEach((catItem) => {
-    const catButton = catItem.querySelector('.faq-category-question');
-    catButton.addEventListener('click', () => {
-      // Close any other open category
-      const openCat = document.querySelector('.faq-category-item.active');
-      if (openCat && openCat !== catItem) {
-        openCat.classList.remove('active');
-      }
-      // Toggle this category
-      catItem.classList.toggle('active');
-    });
-  });
-
-  // QUESTION-ANSWER ACCORDION FUNCTIONALITY
-  const items = document.querySelectorAll('.faq-item');
-
-  items.forEach((item) => {
-    const question = item.querySelector('.faq-question');
-    question.addEventListener('click', () => {
-      // Collapse any other open answer in the same category
-      const openItem = item.closest('.faq-accordion').querySelector('.faq-item.active');
+  items.forEach(function(item) {
+    var question = item.querySelector('.faq-question');
+    question.addEventListener('click', function() {
+      var openItem = item.closest('.faq-accordion').querySelector('.faq-item.active');
       if (openItem && openItem !== item) {
         openItem.classList.remove('active');
       }
-      // Toggle this answer
       item.classList.toggle('active');
     });
   });

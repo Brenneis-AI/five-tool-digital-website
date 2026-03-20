@@ -7,14 +7,14 @@
    ======================================== */
 :root {
   /* Five Tool Digital Color Palette */
-  --color-navy: #1A2F38;           /* Primary Dark Navy */
+  --color-navy: #141E2A;           /* Primary Dark Navy */
   --color-cream: #F5E9CA;          /* Cream/Beige */
   --color-gold: #C4A264;           /* Primary Gold */
   --color-gold-light: #FAEFD1;     /* Light Gold/Cream */
   --color-gold-alt: #D3B776;       /* Alternative Gold */
 
   /* Extended Palette */
-  --color-dark: #1A2F38;           /* Same as navy */
+  --color-dark: #141E2A;           /* Same as navy */
   --color-light: #FFFFFF;          /* Pure White */
   --color-bg-light: #F5E9CA;       /* Cream backgrounds */
   --color-bg-card: #FAEFD1;        /* Light card backgrounds */
@@ -50,7 +50,7 @@ body {
    HERO SECTION
    ======================================== */
 .hero {
-  padding: 0px 0 20px 0;
+  padding: 80px 0 40px 0;
   background: var(--color-navy);
   display: grid;
   grid-template-columns: 60% 40%;
@@ -390,6 +390,107 @@ body {
 }
 
 /* ========================================
+   TESTIMONIALS SECTION
+   ======================================== */
+.testimonials {
+  background: var(--color-navy);
+  padding: 80px 48px;
+}
+
+.testimonials-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.testimonials-headline {
+  font-family: var(--font-display);
+  font-size: 42px;
+  font-weight: 700;
+  color: var(--color-gold);
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+
+.testimonial-card {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(196, 162, 100, 0.25);
+  border-radius: 12px;
+  padding: 40px 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.testimonial-quote {
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.92);
+  font-style: italic;
+  margin: 0 0 32px 0;
+  border: none;
+  padding: 0;
+}
+
+.testimonial-author {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.testimonial-name {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--color-gold);
+}
+
+.testimonial-title {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.testimonial-org {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+/* ========================================
+   AUDIENCE LIST
+   ======================================== */
+.audience-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px 0;
+}
+
+.audience-list li {
+  font-size: 18px;
+  line-height: 1.8;
+  color: var(--color-dark);
+  padding: 8px 0 8px 28px;
+  position: relative;
+  max-width: 600px;
+}
+
+.audience-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 16px;
+  width: 12px;
+  height: 12px;
+  background: var(--color-gold);
+  border-radius: 50%;
+}
+
+/* ========================================
    RESPONSIVE DESIGN
    ======================================== */
 @media (max-width: 768px) {
@@ -501,5 +602,34 @@ body {
 
   .final-declaration p {
     font-size: 18px;
+  }
+
+  /* Testimonials Mobile */
+  .testimonials {
+    padding: 64px 24px;
+  }
+
+  .testimonials-headline {
+    font-size: 32px;
+    margin-bottom: 32px;
+  }
+
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .testimonial-card {
+    padding: 32px 24px;
+  }
+
+  .testimonial-quote {
+    font-size: 16px;
+  }
+
+  /* Audience List Mobile */
+  .audience-list li {
+    font-size: 16px;
+    max-width: 100%;
   }
 }
