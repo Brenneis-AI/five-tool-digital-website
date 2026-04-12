@@ -1,0 +1,411 @@
+<!-- File: section-main1.html | Page: Pricing | Section: Full pricing page (hero, build fees, subscription tiers, comparison modal) | Last Updated: 2026-04-12 -->
+<!-- CSS: page.css | JS: page.js -->
+<!-- Google Fonts (add to GHL page <head>):
+     https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Sans+Pro:wght@400;600;700&display=swap -->
+
+<!-- HERO SECTION -->
+<section class="pricing-hero">
+  <div class="pricing-hero-content">
+    <h1 class="pricing-hero-title">
+      <span class="title-line">Every Feature.<br> One Price.</span>
+      <span class="title-line highlight">No Gate Keeping.<br> No Penalties for Being Small.</span>
+    </h1>
+
+    <h2 class="pricing-hero-subtitle">
+      Enterprise Power—Now Built for Baseball Organizations.
+    </h2>
+
+    <p class="pricing-hero-description">
+      Most website companies hide pricing and lock features behind "enterprise plans." We don't. You get access to everything from day one—automation, AI, integrations, support—whether you're a 50-player rec league or a 500-player travel organization.
+      <br><br>
+      Every tier also includes automated schedule + stats publishing (post-game) so your fans always see accurate, up-to-date information.
+    </p>
+
+    <div class="hero-cta">
+      <a href="#contact" class="cta-button">Book Your Free Baseball Audit</a>
+    </div>
+  </div>
+</section>
+
+<!-- BUILD FEE SECTION -->
+<section class="container" id="pricing">
+  <h1><strong>One-Time Build Fee</strong></h1>
+  <p class="subheadline">
+    <strong>Build pricing depends on your website complexity and automation needs.</strong><br>
+    <em>We'll review your requirements during your free consultation and recommend the right build level.</em>
+  </p>
+
+  <div class="build-cards">
+    <div class="build-card">
+      <h3>Simple Build</h3>
+      <p class="card-tagline">Basic website with essential automation. Perfect for getting started.</p>
+      <div class="build-price">$1,750</div>
+      <div class="pages">up to 5 pages</div>
+      <ul>
+        <li>Custom design</li>
+        <li>Mobile-optimized</li>
+        <li>Basic automation</li>
+        <li>Up to 5 team seats</li>
+      </ul>
+    </div>
+    <div class="build-card">
+      <h3>Standard Build</h3>
+      <p class="card-tagline">More features, more automation. Built for growing organizations.</p>
+      <div class="build-price">$2,500-$3,500</div>
+      <div class="pages">up to 10 pages</div>
+      <ul>
+        <li>Everything in Simple Build</li>
+        <li>Advanced automation workflows</li>
+        <li>Data migration included</li>
+        <li>Up to 10 team seats</li>
+      </ul>
+    </div>
+    <div class="build-card">
+      <h3>Complex Build</h3>
+      <p class="card-tagline">Comprehensive system with extensive automation and integrations.</p>
+      <div class="build-price">$4,000-$5,000</div>
+      <div class="pages">10+ pages</div>
+      <ul>
+        <li>Everything in Standard Build</li>
+        <li>Custom integrations</li>
+        <li>Member portal/database</li>
+        <li>10+ team seats</li>
+      </ul>
+    </div>
+  </div>
+
+  <p class="subheadline" style="margin-top: 2rem; font-size: 1.3rem;">
+    <strong>Nonprofit Baseball Leagues:</strong> 25% off build fee + flexible payment plans available<br>
+    <strong>Veteran-Owned Organizations:</strong> 25% off build fee + flexible payment plans available<br>
+    <span style="font-size: 1rem; color: var(--color-text-muted);">(Discounts not stackable)</span>
+  </p>
+
+  <!-- MONTHLY SUBSCRIPTION SECTION -->
+  <h1 style="margin-top:4rem;"><strong>Monthly Subscription Tiers</strong></h1>
+  <div class="slider-container">
+    <div class="slider-label">
+      Pricing based on your contact volume and usage needs.<br>
+      <span>Not sure which tier you need? We'll help you choose during your free audit.</span>
+    </div>
+    <input type="range" min="0" max="5" value="0" class="slider" id="contactSlider">
+
+    <div class="billing-toggle">
+      <label>
+        <input type="checkbox" id="billingMode" />
+        <span class="toggle-label">
+          <span class="monthly-label" id="monthlyLabel">Monthly</span>
+          <span class="switch"></span>
+          <span class="annual-label" id="annualLabel">
+            Annual Save 10%
+          </span>
+        </span>
+      </label>
+    </div>
+
+    <div class="plan-wrapper">
+      <button class="arrow-btn" id="arrowLeft">&lt;</button>
+      <div class="plan-display" id="planDisplay"></div>
+      <button class="arrow-btn" id="arrowRight">&gt;</button>
+    </div>
+
+    <button class="compare-btn" id="compareBtn">Compare All Tiers Side-by-Side &rarr;</button>
+
+    <p class="subheadline" style="margin-top: 2rem; font-size: 1.3rem;">
+      <strong>All pricing shown is standard rate.</strong><br>
+      Nonprofit baseball leagues receive 15% off monthly subscriptions (forever).<br>
+      Veteran-owned organizations receive 15% off monthly subscriptions (forever).<br>
+      <span style="font-size: 1rem; color: var(--color-text-muted);">(Discounts not stackable)</span>
+    </p>
+  </div>
+</section>
+
+<!-- MODAL POPUP -->
+<div id="comparisonModal" class="modal">
+  <div class="modal-content">
+    <span class="modal-close" id="modalClose">&times;</span>
+
+    <div class="modal-header">
+      <h2>Compare All Tiers</h2>
+      <p>Not sure which tier fits your organization? During your free consultation, we'll review your contact list and usage needs to recommend the right tier. You can always adjust tiers later—no penalties. <strong>Automated post-game schedule + stats publishing is included in every tier. Live GameDay updates + priority coverage are available as an optional season pass.</strong></p>
+    </div>
+
+    <table class="comparison-table">
+      <thead>
+        <tr>
+          <th>Feature</th>
+          <th class="tier-name">Rookie<br>League</th>
+          <th class="tier-name">Single-A</th>
+          <th class="tier-name">Double-A</th>
+          <th class="tier-name">Triple-A</th>
+          <th class="tier-name">Major<br>League</th>
+          <th class="tier-name">Dynasty</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Price/mo</strong></td>
+          <td>$127</td>
+          <td>$197</td>
+          <td>$297</td>
+          <td>$397</td>
+          <td>$597</td>
+          <td>$1,197</td>
+        </tr>
+        <tr>
+          <td><strong>Contacts</strong></td>
+          <td>1,000</td>
+          <td>2,500</td>
+          <td>5,000</td>
+          <td>10,000</td>
+          <td>25,000</td>
+          <td>100,000</td>
+        </tr>
+        <tr>
+          <td><strong>Emails/mo</strong></td>
+          <td>5,000</td>
+          <td>10,000</td>
+          <td>20,000</td>
+          <td>40,000</td>
+          <td>100,000</td>
+          <td>500,000</td>
+        </tr>
+        <tr>
+          <td><strong>SMS/mo</strong></td>
+          <td>200</td>
+          <td>400</td>
+          <td>600</td>
+          <td>1,000</td>
+          <td>2,000</td>
+          <td>5,000</td>
+        </tr>
+        <tr>
+          <td><strong>Voice Min/mo</strong></td>
+          <td>100</td>
+          <td>200</td>
+          <td>300</td>
+          <td>500</td>
+          <td>1,000</td>
+          <td>3,000</td>
+        </tr>
+        <tr>
+          <td><strong>AI Chat Replies</strong></td>
+          <td>400/mo</td>
+          <td>800/mo</td>
+          <td>1,200/mo</td>
+          <td>Unlimited</td>
+          <td>Unlimited</td>
+          <td>Unlimited</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="modal-footer">
+      <p><strong>Nonprofit Baseball Leagues:</strong> 15% off all monthly tiers (forever)</p>
+      <p><strong>Veteran-Owned Organizations:</strong> 15% off all monthly tiers (forever)</p>
+      <p style="font-size: 0.95rem; color: var(--color-text-muted);">(Discounts not stackable)</p>
+      <p style="margin-top: 1rem;">Most organizations start on Rookie or Single-A tier.</p>
+      <a href="#contact" class="modal-cta">Book Your Free Baseball Audit</a>
+    </div>
+  </div>
+</div>
+
+<!-- SPECIAL PRICING FOR NONPROFITS & VETERANS -->
+<section class="special-pricing-section">
+  <div class="special-pricing-container">
+    <h2 class="special-pricing-title">Special Pricing for Nonprofits & Veterans</h2>
+    <p class="special-pricing-subtitle">We believe in supporting organizations that serve their communities and honoring those who've served our country.</p>
+
+    <div class="pricing-cards">
+      <!-- Nonprofit Baseball Leagues Card -->
+      <div class="pricing-card">
+        <div class="card-icon">&#9918;</div>
+        <h3 class="card-title">Nonprofit Baseball Leagues</h3>
+
+        <div class="discount-badges">
+          <div class="discount-badge">
+            <span class="discount-amount">25% OFF</span>
+            <span class="discount-label">Build Fee</span>
+          </div>
+          <div class="discount-badge">
+            <span class="discount-amount">15% OFF</span>
+            <span class="discount-label">Monthly Subscription</span>
+          </div>
+        </div>
+
+        <div class="card-details">
+          <p class="card-label">WHO QUALIFIES:</p>
+          <ul class="qualification-list">
+            <li>501(c)(3) registered organizations</li>
+            <li>Youth baseball leagues (nonprofit)</li>
+            <li>Community recreational programs</li>
+            <li>Summer collegiate leagues (nonprofit)</li>
+          </ul>
+
+          <p class="card-verification">
+            <strong>Verification Required:</strong><br>
+            Copy of 501(c)(3) determination letter or IRS tax-exempt documentation
+          </p>
+        </div>
+      </div>
+
+      <!-- Veteran-Owned Organizations Card -->
+      <div class="pricing-card">
+        <div class="card-icon">&#127482;&#127480;</div>
+        <h3 class="card-title">Veteran-Owned Organizations</h3>
+
+        <div class="discount-badges">
+          <div class="discount-badge">
+            <span class="discount-amount">25% OFF</span>
+            <span class="discount-label">Build Fee</span>
+          </div>
+          <div class="discount-badge">
+            <span class="discount-amount">15% OFF</span>
+            <span class="discount-label">Monthly Subscription</span>
+          </div>
+        </div>
+
+        <div class="card-details">
+          <p class="card-label">WHO QUALIFIES:</p>
+          <ul class="qualification-list">
+            <li>Organizations owned by U.S. military veterans</li>
+            <li>Travel teams founded/operated by veterans</li>
+            <li>Baseball academies owned by veterans</li>
+            <li>Any baseball org with veteran ownership</li>
+          </ul>
+
+          <p class="card-verification">
+            <strong>Verification Required:</strong><br>
+            DD-214 (Certificate of Release or Discharge from Active Duty) or VA ID card
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Important Note -->
+    <div class="pricing-note">
+      <p><strong>Important:</strong> Nonprofit and veteran-owned discounts cannot be combined. If your organization qualifies for both, you'll receive whichever discount is applied (both are 25% build / 15% monthly, so the value is the same).</p>
+    </div>
+
+    <!-- What This Means Section -->
+    <div class="pricing-examples">
+      <h3 class="examples-title">What This Means for Your Pricing:</h3>
+      <div class="examples-grid">
+        <div class="example-card">
+          <h4 class="example-tier">Standard Build + Single-A Tier</h4>
+          <div class="example-pricing">
+            <div class="example-line">
+              <span class="label">Build:</span>
+              <span class="prices"><s>$2,500</s> &rarr; <strong>$1,875</strong></span>
+            </div>
+            <div class="example-line">
+              <span class="label">Monthly:</span>
+              <span class="prices"><s>$197/mo</s> &rarr; <strong>$167/mo</strong></span>
+            </div>
+            <div class="example-savings">
+              You Save: <strong>$625 upfront + $360/year ongoing</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="example-card">
+          <h4 class="example-tier">Complex Build + Triple-A Tier</h4>
+          <div class="example-pricing">
+            <div class="example-line">
+              <span class="label">Build:</span>
+              <span class="prices"><s>$4,500</s> &rarr; <strong>$3,375</strong></span>
+            </div>
+            <div class="example-line">
+              <span class="label">Monthly:</span>
+              <span class="prices"><s>$397/mo</s> &rarr; <strong>$337/mo</strong></span>
+            </div>
+            <div class="example-savings">
+              You Save: <strong>$1,125 upfront + $720/year ongoing</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="special-pricing-cta">
+      <p class="cta-text">Ready to see your discounted pricing?</p>
+      <a href="#contact" class="cta-button">Book Your Free Baseball Audit</a>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING FAQ -->
+<section class="pricing-faq-section">
+  <div class="pricing-faq-container">
+    <h2 class="faq-title">Pricing Questions</h2>
+    <p class="faq-subtitle">The questions everyone asks about how this actually works.</p>
+
+    <div class="faq-accordion">
+      <div class="faq-item">
+        <button class="faq-question">
+          What's actually included in the monthly subscription?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Everything you need to run your baseball organization: website hosting, email &amp; SMS automation, AI chat &amp; voice support, all platform features, unlimited team seats, data storage, and our founder-level support. No hidden fees, no surprise upgrades.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          Can I change my monthly tier later?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Yes! Upgrade or downgrade anytime with 30 days' notice. No penalties, no questions asked. Most organizations start on Rookie or Single-A and adjust as they grow.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          What happens if I go over my tier limits?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>We'll let you know before you hit your limits. If you consistently go over, we'll recommend moving to the next tier. There are no overage fees&mdash;we'll work with you to find the right fit.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          Why do I have to pay a build fee AND a monthly subscription?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>The build fee covers creating your custom website, setting up automations, integrating your tools, and migrating your data&mdash;work that happens once upfront. The monthly subscription covers hosting, ongoing support, platform access, AI usage, and keeping everything running 24/7. Think of it like building a house (one-time) vs. paying utilities (monthly).</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          Are there any hidden fees or extra charges?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>No. What you see is what you pay. Build fee + monthly tier = your total cost. No setup fees, no per-user charges, no feature upgrades. Everything is unlocked from day one.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          How do the nonprofit and veteran discounts actually get applied?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>During your free audit, bring your verification documents (501(c)(3) letter or DD-214). We'll verify your eligibility and apply the discount automatically. The discounted pricing shows up in your quote and invoice&mdash;no promo codes or hoops to jump through.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Still Have Questions CTA -->
+    <div class="faq-cta">
+      <p class="faq-cta-text">Still have pricing questions?</p>
+      <a href="#contact" class="cta-button-outline">Book Your Free Baseball Audit</a>
+    </div>
+  </div>
+</section>
