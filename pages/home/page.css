@@ -390,9 +390,6 @@ body {
    SECTION: Features (section-features3)
    ======================================== */
 
-/* NOTE: --font-display declared as 'Montserrat' here, conflicts with 'Oswald'
-   declared in section-hero1 above. Last declaration wins in CSS cascade.
-   FLAG for Adam's review. */
 :root {
   /* Five Tool Digital Palette — section-features3 additions */
   --color-accent: #D3B776;
@@ -436,52 +433,91 @@ body {
   color: var(--color-text-muted);
 }
 
-/* FEATURES SECTION - DESKTOP */
+/* FEATURES SECTION - DESKTOP SCROLL-LOCK */
+
+/* Scroll-lock runway — tall container for scroll distance (height set by JS) */
+.features-scroll-runway {
+  position: relative;
+}
+
+.features-scroll-runway .features-section {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding: 40px 48px;
+  box-sizing: border-box;
+  width: 100%;
+}
+
 .features-section {
-  padding: 120px 48px;
+  padding: 60px 48px;
   background: var(--color-light);
   position: relative;
 }
 
 .features-container {
-  max-width: 1400px;
+  max-width: 1600px;
+  width: 100%;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 45% 55%;
-  gap: 80px;
-  align-items: flex-start;
+  grid-template-columns: 40% 1fr;
+  gap: 48px;
+  align-items: center;
 }
 
 .features-content {
-  position: sticky;
-  top: 120px;
+  position: relative;
   padding-right: 40px;
 }
 
 .features-content h2 {
   font-family: var(--font-display);
-  font-size: 42px;
+  font-size: 36px;
   font-weight: 700;
   line-height: 1.2;
   letter-spacing: -0.01em;
   color: var(--color-primary);
-  margin-bottom: 32px;
+  margin-bottom: 20px;
 }
 
 .feature-item {
-  padding: 24px 18px;
+  padding: 14px 18px;
   border-bottom: 1px solid var(--color-border);
   cursor: pointer;
-  transition: all var(--transition);
+  transition: opacity 300ms ease, padding var(--transition);
+  position: relative;
+}
+
+/* Scroll-driven dimming — inactive features fade */
+.features-scroll-runway .feature-item {
+  opacity: 0.4;
+}
+
+.features-scroll-runway .feature-item.active {
+  opacity: 1;
 }
 
 .feature-item:hover {
   padding-left: 8px;
+  opacity: 1 !important;
 }
 
 .feature-item.active {
   padding-left: 16px;
-  border-left: 4px solid var(--color-accent);
+}
+
+/* Progress bar — fills as user scrolls through each feature */
+.feature-progress-bar {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 4px;
+  height: 0%;
+  background: var(--color-accent);
+  border-radius: 2px;
 }
 
 .feature-title {
@@ -514,9 +550,8 @@ body {
 }
 
 .features-visual {
-  position: sticky;
-  top: 120px;
-  height: 600px;
+  position: relative;
+  height: min(70vh, 600px);
   background: var(--color-bg-light);
   border-radius: 16px;
   overflow: hidden;
@@ -530,7 +565,7 @@ body {
   width: 100%;
   height: 100%;
   opacity: 0;
-  transition: opacity 600ms ease;
+  transition: opacity 350ms ease;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -547,7 +582,11 @@ body {
   object-fit: contain;
 }
 
-/* ACCORDION — Always Visible (desktop horizontal version removed) */
+/* MOBILE ACCORDION — Hidden on Desktop */
+.features-section-mobile {
+  display: none;
+}
+
 .features-mobile {
   display: block;
   max-width: 800px;
@@ -639,11 +678,15 @@ body {
   color: var(--color-dark);
 }
 
-/* RESPONSIVE DESIGN */
+/* RESPONSIVE: Tablet and below — hide desktop scroll-lock, show mobile accordion */
+@media (max-width: 1024px) {
+  .features-scroll-runway {
+    display: none;
+  }
 
-/* Desktop horizontal features removed — accordion is always shown */
-.features-container {
-  display: none;
+  .features-section-mobile {
+    display: block;
+  }
 }
 
 @media (max-width: 768px) {
