@@ -310,6 +310,7 @@ body {
   border-bottom: 1px solid var(--color-border);
   cursor: pointer;
   transition: all var(--transition);
+  position: relative;
 }
 
 .feature-item:hover {
@@ -386,9 +387,52 @@ body {
 }
 
 /* ========================================
-   ACCORDION — Always Visible (desktop horizontal version removed)
+   DESKTOP SCROLL-LOCK RUNWAY
    ======================================== */
-.features-container {
+.features-scroll-runway {
+  position: relative;
+}
+
+.features-scroll-runway .features-section {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding: 40px 48px;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+/* Scroll-driven dimming — inactive features fade */
+.features-scroll-runway .feature-item {
+  opacity: 0.4;
+}
+
+.features-scroll-runway .feature-item.active {
+  opacity: 1;
+}
+
+.feature-item:hover {
+  opacity: 1 !important;
+}
+
+/* Progress bar — fills as user scrolls through each feature */
+.feature-progress-bar {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 4px;
+  height: 0%;
+  background: var(--color-secondary);
+  border-radius: 2px;
+}
+
+/* ========================================
+   MOBILE ACCORDION — Hidden on Desktop
+   ======================================== */
+.features-section-mobile {
   display: none;
 }
 
@@ -597,6 +641,17 @@ body {
 /* ========================================
    RESPONSIVE DESIGN
    ======================================== */
+
+/* Tablet and below — hide desktop scroll-lock, show mobile accordion */
+@media (max-width: 1024px) {
+  .features-scroll-runway {
+    display: none;
+  }
+
+  .features-section-mobile {
+    display: block;
+  }
+}
 
 @media (max-width: 768px) {
   .hero {
